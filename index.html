@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Throw Disc</title>
+ 
+      <style>
+        #container {
+
+            /* border: 1px solid red; */
+            height: 340px;
+            width: 25%;
+            margin: auto;
+            margin-top: 140px;
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+            border-radius: 10px;
+            padding: 20px 30px;
+            text-align: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        #comntainer>div {
+            /* border: 1pc solid red; */
+
+        }
+
+        h2 {
+            text-align: center;
+
+            font-size: 26px;
+            color: #006f6f;
+            /* border: 1px solid firebrick; */
+            margin: 30px auto;
+        }
+
+        h2+div+div {
+            /* border: 1px solid seagreen; */
+            display: flex;
+            width: 100%;
+            height: 20%;
+            justify-content: space-between;
+        }
+
+        h2+div+div>div {
+            /* border: 1px solid rgb(139, 58, 46); */
+
+            width: 28%;
+            height: 80%;
+
+            display: flex;
+            align-items: center;
+
+            justify-content: center;
+            background-color: #808080;
+            border-radius: 10px;
+        }
+
+        #member-1 {
+            /* border: 1px solid darkblue; */
+        }
+
+        #member-2 {
+            /* border: 1px solid rgb(0, 139, 72); */
+        }
+
+        #member-3 {
+            /* border: 1px solid rgb(156, 127, 31); */
+        }
+
+        #winner {
+            /* border: 1px solid rgb(127, 0, 139); */
+            width: 50%;
+            height: 16%;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+
+            justify-content: center;
+            background-color: #808080;
+            border-radius: 10px;
+
+
+        }
+
+        #roll {
+            text-align: center;
+font-weight: bold;
+
+            display: block;
+            margin: 10px auto;
+            width: 55%;
+            height: 16%;
+            background-color: white;
+            border-radius: 10px;
+            font-size: 20px;
+         cursor: pointer;
+
+        }
+        #roll:hover{
+            background-color: #008080;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h2>Throw Dice Game</h2>
+        <div id="winner">Winner</div>
+        <div>
+            <div id="member-1">Menber A </div>
+            <div id="member-2">Member B </div>
+            <div id="member-3">Member C <Col></Col> </div>
+        </div>
+        <button id="roll">ROLL THE DICE</button>
+    </div>
+
+
+</body>
+
+</html>
+<script >
+    document.querySelector("#roll").addEventListener("click",RollDisc);
+
+    function RollDisc(){
+      var m1=  document.querySelector("#member-1");
+     x= Math.floor((Math.random() * 10) + 1);
+     m1.innerHTML=x;
+   
+      var m2=  document.querySelector("#member-2");
+     y= Math.floor((Math.random() * 10) + 1);
+     m2.innerHTML=y;
+      var m3=  document.querySelector("#member-3");
+     z= Math.floor((Math.random() * 10) + 1);
+     m3.innerHTML=z;
+   console.log(x,y,z)
+
+   if(x==y||y==z||z==x){
+
+    if(x==y){
+
+        if(x>z){
+            m1.style.backgroundColor="blue"
+    m3.style.backgroundColor="yellow"
+    m2.style.backgroundColor="blue"
+    var win=document.querySelector("#winner");
+    win.innerHTML="Draw";
+    win.style.backgroundColor="#008080"
+
+        }
+        else if(x<z){
+            m1.style.backgroundColor="blue"
+    m3.style.backgroundColor="green"
+    m2.style.backgroundColor="blue"
+
+    var win=document.querySelector("#winner");
+    win.innerHTML="Winner - Member C";
+    win.style.backgroundColor="#008080"
+        }
+      
+    }
+   
+ 
+   else if(y==z){
+
+if(y>x){
+    m3.style.backgroundColor="blue"
+m1.style.backgroundColor="yellow"
+m2.style.backgroundColor="blue"
+var win=document.querySelector("#winner");
+win.innerHTML="Draw";
+win.style.backgroundColor="#008080"
+
+}
+else if(y<x){
+    m3.style.backgroundColor="blue"
+m1.style.backgroundColor="green"
+m2.style.backgroundColor="blue"
+
+var win=document.querySelector("#winner");
+win.innerHTML="Winner - Member A";
+win.style.backgroundColor="#008080"
+}
+
+}
+
+
+ 
+else if(z==x){
+
+if(z>y){
+    m3.style.backgroundColor="blue"
+m2.style.backgroundColor="yellow"
+m1.style.backgroundColor="blue"
+var win=document.querySelector("#winner");
+win.innerHTML="Draw";
+win.style.backgroundColor="#008080"
+
+}
+else if(z<y){
+    m3.style.backgroundColor="blue"
+m2.style.backgroundColor="green"
+m1.style.backgroundColor="blue"
+
+var win=document.querySelector("#winner");
+win.innerHTML="Winner - Member B";
+win.style.backgroundColor="#008080"
+}
+
+}
+
+
+
+   }
+
+   //else check
+   else{
+
+    var maxV=Math.max(x,y,z);
+   var minV=Math.min(x,y,z);
+   var middleV=0;
+if((maxV==x&& minV==y)||(maxV==y&& minV==x)){
+
+middleV=z;
+if(maxV==x&& minV==y){
+    m1.style.backgroundColor="green"
+    m3.style.backgroundColor="yellow"
+    m2.style.backgroundColor="red"
+    var win=document.querySelector("#winner");
+win.innerHTML="Winner - Member A";
+win.style.backgroundColor="#008080"
+}
+else{
+    m3.style.backgroundColor="yellow"
+    m2.style.backgroundColor="green"
+    m1.style.backgroundColor="red"
+    var win=document.querySelector("#winner");
+win.innerHTML="Winner - Member B";
+win.style.backgroundColor="#008080"
+
+}
+    // m1.style.backgroundColor="green"
+}
+else if((maxV==y&& minV==z)||(maxV==z&& minV==y)){
+
+middleV=x;
+if(maxV==y&& minV==z){
+    m1.style.backgroundColor="yellow"
+    m3.style.backgroundColor="red"
+    m2.style.backgroundColor="green"
+
+    var win=document.querySelector("#winner");
+win.innerHTML="Winner - Member B";
+win.style.backgroundColor="#008080"
+}
+else{
+    m1.style.backgroundColor="yellow"
+    m3.style.backgroundColor="green"
+    m2.style.backgroundColor="red"
+    var win=document.querySelector("#winner");
+win.innerHTML="Winner - Member C";
+win.style.backgroundColor="#008080"
+    // m1.style.backgroundColor="green"
+}
+}
+
+else if((maxV==x&& minV==z)||(maxV==z&& minV==x)){
+
+middleV=y;
+if(maxV==x&& minV==z){
+    m2.style.backgroundColor="yellow"
+    m3.style.backgroundColor="red"
+    m1.style.backgroundColor="green"
+    var win=document.querySelector("#winner");
+win.innerHTML="Winner - Member A";
+win.style.backgroundColor="#008080"
+}
+else{
+    m2.style.backgroundColor="yellow"
+    m3.style.backgroundColor="green"
+    m1.style.backgroundColor="red"
+    var win=document.querySelector("#winner");
+win.innerHTML="Winner - Member C";
+win.style.backgroundColor="#008080"
+    // m1.style.backgroundColor="green"
+}
+}
+
+
+
+   }
+
+
+
+    }
+</script>
